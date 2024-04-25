@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andhra Loyola Institute of Engineering and Technology</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="admin_panel.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--GOOGLE FONTS-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <header>
+      <div class="header-container">
+        <img src="https://i.ibb.co/HrzyTFd/Screenshot-2024-02-28-100728.png" alt="Profile Picture" class="profile-pic">
+        <h1 class="header-text">Andhra Loyola Institute of Engineering and Technology</h1>
+        <div class="side-pic-container">
+          <!-- <img src="https://i.ibb.co/KKHhhN7/image1.jpg"  alt="side Picture" class="side-pic"> -->
+          <img src="https://i.ibb.co/qp25x8y/Screenshot-2024-03-05-093014.png" alt="side Picture" class="side-pic">
+         <!---- <img src="https://i.ibb.co/Z8qfjtk/Screenshot-2024-03-05-092735.png"    alt="side Picture" class="side-pic"> -->
+        </div>
+      </div>
+      <div class="text-container">
+        <p class="large-text">[AUTONOMOUS]</p>
+        <div class="Approved">
+        <h4>Approved by AICTE, New Delhi and Affiliated to JNTU Kakinada</h4>
+        </div>
+        <p class="small-text">Accredited by NAAC & An ISO 9001: 2015 Certified Institution ::
+          <span class="highlight-text">EAMCET/ICET CODE : ALIT</span>
+         
+        </p>
+      </div>
+    </header>
+    
+    
+
+  </header>
+
+  <div class="bar">
+  
+    <div class="text" id="homeBtn">HOME</div>
+
+
+    <div class="text" id="studentBtn">STUDENT</div>
+    
+    <div class="text" id="attendanceBtn">ATTENDANCE</div>
+    <div class="text" id="otherBtn">MARK ATTENDENCE</div>
+    <div class="text" id="login">LOGIN</div>
+   
+    
+</div>
+
+  <br>
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="https://i.ibb.co/jhqzDvb/image4.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer">
+      <div class="row">
+        <h1><a href="#">ALIT</a></h1>
+
+    </div>
+     
+      <div class="row">
+        Designed By: TEAM SAVARI
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('attendanceBtn').addEventListener('click', function() {
+      // Redirect to the attendance page
+      window.location.href = 'scanningpage.html';
+    });
+    document.getElementById('homeBtn').addEventListener('click', function() {
+      // Redirect to the attendance page
+      window.location.href = 'index.html';
+    });
+
+
+    document.getElementById('studentBtn').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'studentdetails.html';
+    });
+    document.getElementById('otherBtn').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'markattendence.html';
+    });
+    document.getElementById('attendanceBtn').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'departmentdetails1.html';
+    });
+    document.getElementById('login').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+    <style>
+        /* Basic CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px auto;
+            width: 90%; /* Increased width of the container */
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-container {
+            width: 50%; /* Increased width of the left container */
+            position: relative;
+        }
+
+        .right-container {
+            width: 45%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .photo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .photo-container img {
+            width: 150px;
+            height: 150px;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-details {
+            margin-top: 20px;
+        }
+
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .student-table th, .student-table td {
+            padding: 8px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        .student-table th {
+            background-color: #f2f2f2;
+        }
+
+        .modal {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%); /* Center the modal horizontally */
+            top: 20px; /* Adjusted top position */
+            width: 80%; /* Adjusted width of the modal */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-text {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            animation: slideIn 0.5s ease forwards, slideOut 0.5s ease forwards 2.5s;
+        }
+
+        .popup-text.error {
+            background-color: #f44336;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-50%);
+            }
+        }
+        /* Header Styles */
+.header {
+  background-color: #020947;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.header-container {
+  position: relative;
+}
+
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: -40px;
+  top: 180%;
+  margin-left: 70px;
+  transform: translateY(-50%);
+}
+
+.side-pic-container {
+  position: absolute;
+  right: -45px;
+  top: 200%;
+  transform: translateY(-50%);
+}
+
+.side-pic {
+  width: 350px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 30px;
+}
+
+.Approved {
+  padding-right: 150px;
+}
+
+.header-text {
+  margin-left: -150px;
+}
+
+.small-text .highlight-text {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.text-container {
+  padding: -5px;
+  text-align: center;
+}
+
+.large-text {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #EA3322;
+  margin-right: 150px;
+  font-weight: bold;
+}
+
+.small-text {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  padding-right: 150px;
+}
+
+/* Notification Bar Styles */
+.bar {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.text {
+  position: relative;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 10px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+}
+
+.text:before,
+.text:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: calc(100% - 20px);
+  height: 100%;
+  background: transparent;
+  transition: transform 0.3s ease-out;
+}
+
+.text:before {
+  left: 10px;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.text:after {
+  right: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.text:hover:before,
+.text:hover:after {
+  transform: scaleX(1);
+}
+
+.text:hover {
+  transform: translateY(2px);
+}
+
+.text:active {
+  transform: translateY(4px);
+}
+
+#homeBtn {
+  padding-left: 5%;
+}
+
+#login {
+  padding-left: 15%;
+}
+
+#otherBtn {
+  padding-left: 15%;
+}
+
+#studentBtn {
+  padding-left: 15%;
+}
+
+#attendanceBtn {
+  padding-left: 15%;
+}
+
+/* Form Styles */
+form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#studentId {
+  width: 200px;
+  padding: 8px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #5594eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #557099;
+}
+
+#details {
+  margin-top: 20px;
+  text-align: left;
+  padding-left: 30px;
+}
+
+#calendar {
+  max-width: 600px;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+#studentPhoto {
+  max-width: 200px;
+  height: auto;
+}
+
+    </style>
+</head>
+<body>
+      <!-- Header Section -->
+      <header class="header">
+        <div class="header-container">
+            <img src="https://i.ibb.co/HrzyTFd/Screenshot-2024-02-28-100728.png" alt="Profile Picture" class="profile-pic">
+            <h1 class="header-text">Andhra Loyola Institute of Engineering and Technology</h1>
+            <div class="side-pic-container">
+                <img src="https://i.ibb.co/qp25x8y/Screenshot-2024-03-05-093014.png" alt="side Picture" class="side-pic">
+            </div>
+        </div>
+        <div class="text-container">
+            <p class="large-text">[AUTONOMOUS]</p>
+            <div class="Approved">
+                Approved by AICTE, New Delhi and Affiliated to JNTU Kakinada
+            </div>
+            <p class="small-text">Accredited by NAAC & An ISO 9001: 2015 Certified Institution ::
+                <span class="highlight-text">EAMCET/ICET CODE : ALIT</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Notification Bar Section -->
+    <div class="bar">
+        <div class="text" id="homeBtn">HOME</div>
+      
+    <div class="text" id="studentBtn">STUDENT</div>
+    
+    <div class="text" id="attendanceBtn">ATTENDANCE</div>
+    <div class="text" id="otherBtn">MARK ATTENDENCE</div>
+    <div class="text" id="login">LOGIN</div>
+   
+    </div>
+
+    <h1>Mark Attendance</h1>
+    <div class="container">
+        <div class="left-container">
+            <form id="attendanceForm">
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" name="studentId" maxlength="10">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="right-container">
+            <div class="photo-container" id="photoContainer">
+                <!-- Student photo will be inserted here -->
+            </div>
+            <div class="student-details" id="studentDetails">
+                <table class="student-table">
+                    <tr>
+                        <th>Name</th>
+                        <td id="studentName"></td>
+                    </tr>
+                    <tr>
+                        <th>Student ID</th>
+                        <td id="studentIdInfo"></td>
+                    </tr>
+                    <tr>
+                        <th>Course</th>
+                        <td id="studentCourse"></td>
+                    </tr>
+                    <tr>
+                        <th>Branch</th>
+                        <td id="studentBranch"></td>
+                    </tr>
+                    <tr>
+                        <th>Attendance Percentage</th>
+                        <td id="attendancePercentage"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal to display messages -->
+    <div id="messageModal" class="modal"></div>
+
+    <script>
+        const form = document.getElementById('attendanceForm');
+        const studentIdInput = document.getElementById('studentId');
+        const photoContainer = document.getElementById('photoContainer');
+        const studentNameInfo = document.getElementById('studentName');
+        const studentIdInfo = document.getElementById('studentIdInfo');
+        const studentCourseInfo = document.getElementById('studentCourse');
+        const studentBranchInfo = document.getElementById('studentBranch');
+        const attendancePercentageInfo = document.getElementById('attendancePercentage');
+    
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const studentId = studentIdInput.value;
+    
+            if (studentId.length !== 10) {
+                showMessage('Student ID must be 10 characters long. Please try again.', 'error');
+                return;
+            }
+    
+            try {
+                const response = await fetch('/mark-attendance', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ studentId })
+                });
+    
+                if (response.ok) {
+                    const responseData = await response.json();
+    
+                    // Display student photo
+                    photoContainer.innerHTML = `
+                        <img src="/student/photo/${responseData.student.studentId}" alt="Student Photo">
+                    `;
+    
+                    // Display student details
+                    studentNameInfo.textContent = responseData.student.name;
+                    studentIdInfo.textContent = studentId;
+                    studentCourseInfo.textContent = responseData.student.course;
+                    studentBranchInfo.textContent = responseData.student.branch;
+    
+                    // Fetch and display attendance percentage
+                    const attendancePercentage = await fetchAttendancePercentage(responseData.student.studentId);
+                    if (attendancePercentage !== null) {
+                        attendancePercentageInfo.textContent = `${attendancePercentage}%`;
+                    } else {
+                        attendancePercentageInfo.textContent = 'N/A';
+                    }
+    
+                    // Show popup text
+                    showPopupText('Attendance marked successfully', 'success');
+    
+                    // Clear the input field
+                    studentIdInput.value = '';
+                } else {
+                    showMessage('Failed to mark attendance. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('Failed to mark attendance. Please try again.', 'error');
+            }
+        });
+    
+        async function fetchAttendancePercentage(studentId) {
+            try {
+                const response = await fetch(`/student/attendance/${studentId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.attendancePercentage;
+                } else {
+                    console.error('Failed to fetch attendance percentage');
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error fetching attendance percentage:', error);
+                return null;
+            }
+        }
+    
+        function showMessage(message, messageType) {
+            const messageModal = document.getElementById('messageModal');
+            messageModal.innerHTML = `<p class="${messageType}">${message}</p>`;
+            messageModal.style.display = 'block';
+    
+            // Hide the message modal after 3 seconds
+            setTimeout(() => {
+                messageModal.style.display = 'none';
+            }, 3000);
+        }
+    
+        function showPopupText(message, messageType) {
+            const leftContainer = document.querySelector('.left-container');
+    
+            // Create a new div element for the popup text
+            const popupText = document.createElement('div');
+            popupText.textContent = message;
+            popupText.classList.add('popup-text', messageType);
+    
+            // Append the popup text to the left container
+            leftContainer.appendChild(popupText);
+    
+            // Remove the popup text after 3 seconds
+            setTimeout(() => {
+                popupText.remove();
+            }, 3000);
+        }
+    </script>
+   <script>
+   
+    document.getElementById('homeBtn').addEventListener('click', function() {
+      // Redirect to the attendance page
+      window.location.href = 'index.html';
+    });
+
+
+    document.getElementById('studentBtn').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'studentdetails.html';
+    });
+    document.getElementById('otherBtn').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'markattendence.html';
+    });
+    document.getElementById('attendanceBtn').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'departmentdetails1.html';
+    });
+    document.getElementById('login').addEventListener('click', function() {
+      // Redirect to the student details page
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

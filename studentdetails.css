@@ -1,0 +1,201 @@
+/* Header Styles */
+.header {
+  background-color: #020947;
+  color: #fff;
+  padding: 22px;
+  text-align: center;
+}
+
+.header-container {
+  position: relative;
+}
+
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: -70px;
+  top: 180%;
+  margin-left: 70px;
+  transform: translateY(-50%);
+}
+
+.side-pic-container {
+  position: absolute;
+  right: -45px;
+  top: 200%;
+  transform: translateY(-50%);
+}
+
+.side-pic {
+  width: 350px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 30px;
+}
+
+.Approved {
+  padding-right: 150px;
+}
+
+.header-text {
+  margin-left: -180px;
+}
+
+.small-text .highlight-text {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.text-container {
+  padding: -5px;
+  text-align: center;
+}
+
+.large-text {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #EA3322;
+  margin-right: 150px;
+  font-weight: bold;
+}
+
+.small-text {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  padding-right: 150px;
+}
+
+/* Notification Bar Styles */
+.bar {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.text {
+  position: relative;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 10px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+}
+
+.text:before,
+.text:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: calc(100% - 20px);
+  height: 100%;
+  background: transparent;
+  transition: transform 0.3s ease-out;
+}
+
+.text:before {
+  left: 10px;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.text:after {
+  right: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.text:hover:before,
+.text:hover:after {
+  transform: scaleX(1);
+}
+
+.text:hover {
+  transform: translateY(2px);
+}
+
+.text:active {
+  transform: translateY(4px);
+}
+
+#homeBtn {
+  padding-left: 5%;
+}
+
+#login {
+  padding-left: 15%;
+}
+
+#otherBtn {
+  padding-left: 14%;
+}
+
+#studentBtn {
+  padding-left: 15%;
+}
+
+#attendanceBtn {
+  padding-left: 15%;
+}
+
+/* Form Styles */
+form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#studentId {
+  width: 200px;
+  padding: 8px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #5594eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #557099;
+}
+
+#details {
+  margin-top: 20px;
+  text-align: left;
+  padding-left: 30px;
+}
+
+#calendar {
+  max-width: 600px;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+#studentPhoto {
+  max-width: 200px;
+  height: auto;
+}

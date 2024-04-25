@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Details</title>
+    <style>
+        /* CSS for back button and table */
+        .button {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Additional styles */
+        .green-box {
+            background-color: #a3e8b8; /* Light green */
+            color: green;
+        }
+
+        .red-box {
+            background-color: #ffb2b2; /* Light red */
+            color: red;
+        }
+
+        .red-percentage {
+            color: red;
+        }
+
+        .green-percentage {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back button -->
+    <button class="button" onclick="goBack()">Back</button>
+
+    <div id="departmentDetails"></div>
+
+    <script src="departmentDetails.js"></script>
+
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

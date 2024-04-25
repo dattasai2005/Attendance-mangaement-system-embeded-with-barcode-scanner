@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andhra Loyola Institute Of Engineering And Technology</title>
+ 
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="https://i.ibb.co/HrzyTFd/Screenshot-2024-02-28-100728.png" alt="Profile Picture" class="profile-pic">
+      <h1 class="header-text">Andhra Loyola Institute Of Engineering And Technology</h1>
+    </div>
+    <div class="text-container">
+    <p class="large-text">[AUTONOMOUS]</p>
+    <p class="small-text">Accredited by NAAC & An ISO 9001: 2015 Certified Institution :: EAMCET/ICET CODE : ALIT  Approved by AICTE, New Delhi and Affiliated to JNTU Kakinada</p>
+  </div>
+  </header>
+  
+  <div class="container">
+    <form id="loginForm" method="POST">
+      <h2>Login</h2>
+      <div>
+        <select id="login_access" name="login">
+          <option value="admin">Admin</option>
+          <option value="hod">HOD</option>
+          <option value="faculty">Faculty</option>
+          <option value="student">Student</option> 
+        </select>
+      </div>
+      <input type="text" id="id" name="id" placeholder="ID" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p id="message"></p>
+  </div>
+  
+</body>
+</html>
